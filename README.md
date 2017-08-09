@@ -9,6 +9,13 @@ make
 ./prometheus_inception_exporter [flags]
 ```
 
+or
+
+```bash
+go get github.com/samber/prometheus-inception-exporter
+prometheus_inception_exporter [flags]
+```
+
 ## Why
 
 You need alerting to detect exporters failures:
