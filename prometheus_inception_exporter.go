@@ -151,7 +151,7 @@ func (e *Exporter) scrape() error {
 		if target.Health == "up" {
 			target_states[target.ScrapeURL].Set(target_up)
 			count++
-		} else if target.Health == "down" {
+		} else if target.Health == "down" || target.Health == "unknown" {
 			target_states[target.ScrapeURL].Set(target_down)
 			count++
 		}
