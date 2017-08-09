@@ -27,7 +27,7 @@ You need alerting to detect exporters failures:
 | Metric | Meaning | Labels |
 | ------ | ------- | ------ |
 | metrics_namespace_target_count | Number of exporter currently up or down (except removed targets). | |
-| metrics_namespace_target_state | Current state of each exporter. | {job_name: cadvisor,sd,custom..., scrape_url: http://postgresql-exporter.acme.io:9123/metrics } |
+| metrics_namespace_target_state | Current state of each exporter. | {job_name: cadvisor,sd,custom..., scrape_url: https://postgresql-exporter.acme.io:9123/metrics } |
 
 ### Example:
 
@@ -91,9 +91,19 @@ scrape_configs:
 
 ```
 
-## Alerting configuration:
+## Alerting configuration
 
-
+```
+ALERT ExperterDown
+  IF prometheus_inception_target_state{} == 0
+  FOR 1m
+  LABELS { severity="slack" }
+  ANNOTATIONS {
+    summary = "Prometheus exporter DOWN",
+    to = "@channel",
+    description = "{{ $labels.job_name }} - {{ $labels.scrape_url }} - https://prometheus.acme.io:9090/targets",
+  }
+```
 
 ## Using Docker
 
@@ -104,7 +114,7 @@ For example:
 ```bash
 docker pull samber/prometheus-inception-exporter
 
-docker run -d -p 9142:9142 samber/prometheus-inception-exporter -prometheus.addr=http://prometheus.acme.io:9090 -prometheus.basic_auth.username=foo -prometheus.basic_auth.username=bar
+docker run -d -p 9142:9142 samber/prometheus-inception-exporter -prometheus.addr=https://prometheus.acme.io:9090 -prometheus.basic_auth.username=foo -prometheus.basic_auth.username=bar
 ```
 
 
