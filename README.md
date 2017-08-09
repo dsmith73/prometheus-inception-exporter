@@ -101,7 +101,7 @@ ALERT ExperterDown
   ANNOTATIONS {
     summary = "Prometheus exporter DOWN",
     to = "@channel",
-    description = "{{ $labels.job_name }} - {{ $labels.scrape_url }} - https://prometheus.acme.io:9090/targets",
+    description = "Failed to scrape {{ $labels.job_name }} at {{ $labels.scrape_url }} -- see https://prometheus.acme.io:9090/targets",
   }
 ```
 
