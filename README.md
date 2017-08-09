@@ -9,12 +9,18 @@ make
 ./prometheus_inception_exporter [flags]
 ```
 
+## Why
+
+You need alerting to detect exporters failures:
+
+![prometheus console](screenshot.png)
+
 ## Exported Metrics
 
 | Metric | Meaning | Labels |
 | ------ | ------- | ------ |
 | metrics_namespace_target_count | Number of exporter currently up or down (except removed targets). | |
-| metrics_namespace_target_state | Current state of each exporter. | {job_name: cadvisor,sd,custom... | scrape_url: http://postgresql-exporter.acme.io:9123/metrics } |
+| metrics_namespace_target_state | Current state of each exporter. | {job_name: cadvisor,sd,custom..., scrape_url: http://postgresql-exporter.acme.io:9123/metrics } |
 
 ### Example:
 
