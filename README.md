@@ -81,11 +81,11 @@ scrape_configs:
 
 [...]
 
-  - job_name: 'connectors-webhook-collector-job'
+  - job_name: 'prometheus-inception-exporter'
     scrape_interval: 5s
     scrape_timeout: 3s
     static_configs:
-      - targets: ['94.125.164.108:10960']
+      - targets: ['1.2.3.4:9142']
 
 [...]
 
