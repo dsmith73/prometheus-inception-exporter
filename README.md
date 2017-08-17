@@ -1,4 +1,4 @@
-# Prometheus inception exporter [![Build Status](https://travis-ci.org/samber/prometheus_inception_exporter.svg)][travis]
+# Prometheus inception exporter [![Build Status](https://travis-ci.org/samber/prometheus-inception-exporter.svg)][travis]
 
 Exports exporters states (aka. targets) to Prometheus. In order to setup alerting on exporter status.
 
